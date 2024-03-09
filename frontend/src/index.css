@@ -1,0 +1,46 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --background-color: #ebedf0;
+  --background_gradient: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.85)
+    ),
+    radial-gradient(
+      81.17% 30.63% at 142.62% 78.23%,
+      rgba(143, 0, 255, 0.5) 0%,
+      rgba(235, 0, 255, 0) 100%
+    ),
+    radial-gradient(
+      108.27% 61.04% at 168.58% 7.16%,
+      rgba(0, 255, 240, 0.5) 0%,
+      rgba(0, 209, 255, 0) 100%
+    ),
+    radial-gradient(
+      82.11% 32.85% at 100% 103.4%,
+      rgba(0, 255, 240, 0.5) 0%,
+      rgba(0, 209, 255, 0) 100%
+    ),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.main_container {
+  width: 100%;
+  height: 100vh;
+  background: var(--background-color);
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+html,
+body {
+  margin: 0px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,40 @@
+.avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 300px;
+  background: var(--avatar_color);
+}
+
+.followersInfo {
+  padding: 4px 3px;
+  color: #19191a;
+  border-radius: 9px;
+  background: #dddee0;
+  font-size: 12px;
+}
+
+.main_info_container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.main_info_container__title {
+  display: flex;
+  gap: 4px;
+}
+
+.main_info_container__subhead {
+  align-self: self-end;
+}
+
+.friend_list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.main_info_container__friends-amount {
+  cursor: pointer;
+}

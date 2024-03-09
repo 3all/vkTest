@@ -10,7 +10,7 @@ export interface GetGroupsResponse {
   data?: Group[]
 }
 
-export interface Group {
+export type Group = {
   id: number
   name: string
   closed: boolean

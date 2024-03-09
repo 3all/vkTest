@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container__fixator {
+  width: 100%;
+  max-width: 600px;
+}
+
+.container__virtualizer-container {
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
+  max-height: 600px;
+}
+
+.container__group {
+  background: white;
+}
+
+.modal {
+  padding: 12px !important;
+}
