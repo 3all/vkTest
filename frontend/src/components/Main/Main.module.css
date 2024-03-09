@@ -23,9 +23,20 @@
 .main_info_container__title {
   display: flex;
   gap: 4px;
+  white-space: nowrap;
+  display: block;
 }
 
-.main_info_container__subhead {
+.main_info_container__title_text {
+  text-align: left;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+.main_info_container__title_subhead {
   align-self: self-end;
 }
 

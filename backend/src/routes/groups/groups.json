@@ -8,38 +8,14 @@
     "friends": [
       {
         "first_name": "Маша",
-        "last_name": "Петроdasasdва"
-      },
-      {
-        "first_name": "Фёдор",
-        "last_name": "Агаdasпов"
-      },
-      {
-        "first_name": "Вера",
-        "last_name": "Петровsdsdа"
-      },
-      {
-        "first_name": "Машasdasdа",
-        "last_name": "Петрasdова"
-      },
-      {
-        "first_name": "Фёдор",
-        "last_name": "Агаsdaasdпов"
-      },
-      {
-        "first_name": "Вера",
-        "last_name": "Петрasdasdова"
-      },
-      {
-        "first_name": "Маша",
-        "last_name": "Петрasdasова"
+        "last_name": "Петрова"
       },
       {
         "first_name": "Фёдор",
         "last_name": "Агапов"
       },
       {
-        "first_name": "Вdasера",
+        "first_name": "Вера",
         "last_name": "Петрова"
       }
     ]

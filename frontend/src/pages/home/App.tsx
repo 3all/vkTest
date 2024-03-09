@@ -37,18 +37,30 @@ function HomePage() {
   const [filterIsPublic, setFilterIsPublic] = useState(false)
   const [filterAvatarColor, setFilterAvatarColor] = useState<string[]>([])
   const [filterHasFriends, setFilterHasFriends] = useState(false)
-  const parentRef = useRef(null)
+  const parentRef = useRef<HTMLDivElement>(null)
+
+  let virtualizerCount = 0
+  if (filteredData && filteredData.length > 0) {
+    virtualizerCount = filteredData.length
+  } else if (groupsData && groupsData.data && groupsData.data.length > 0) {
+    virtualizerCount = groupsData.data.length
+  }
+
+  let overscanValue = 0
+  if (virtualizerCount === 0) {
+    overscanValue = 1
+  } else {
+    overscanValue = Math.max(virtualizerCount - 6, 0)
+  }
 
   const rowVirtualizer = useVirtualizer({
-    count:
-      filteredData?.length === 0
-        ? 0
-        : filteredData?.length || groupsData?.data?.length || 0,
+    count: virtualizerCount,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 108,
-    overscan: 10,
+    overscan: overscanValue,
   })
 
+  const items = rowVirtualizer.getVirtualItems()
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen)
   }
@@ -104,7 +116,6 @@ function HomePage() {
           .filter((color): color is string => color !== undefined)
       )
 
-      // allPossibleColors = Array.from(uniqueColors)
       return Array.from(uniqueColors.add('gray'))
     }
 
@@ -241,8 +252,9 @@ function HomePage() {
               ref={parentRef}
               style={{
                 width: '100%',
-                height: '100%',
+                height: 600,
                 overflow: 'auto',
+                contain: 'strict',
               }}
             >
               <div
@@ -252,7 +264,16 @@ function HomePage() {
                   position: 'relative',
                 }}
               >
-                {rowVirtualizer.getVirtualItems().map((virtualItem, index) => (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    transform: `translateY(${items[0]?.start ?? 0}px)`,
+                  }}
+                ></div>
+                {items.map((virtualItem, index) => (
                   <GroupItem
                     virtualItem={virtualItem}
                     groupInfo={
@@ -261,6 +282,7 @@ function HomePage() {
                         : // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
                           groupsData.data?.[index]!
                     }
+                    measureElement={rowVirtualizer.measureElement}
                   />
                 ))}
               </div>

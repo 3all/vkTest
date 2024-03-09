@@ -10,9 +10,14 @@ import { parseNumber } from '../../utils/parseNumber'
 type GroupItemProps = {
   virtualItem: VirtualItem
   groupInfo: Group
+  measureElement: (node: Element | null) => void
 }
 
-export const GroupItem: FC<GroupItemProps> = ({ virtualItem, groupInfo }) => {
+export const GroupItem: FC<GroupItemProps> = ({
+  virtualItem,
+  groupInfo,
+  measureElement,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
@@ -20,15 +25,8 @@ export const GroupItem: FC<GroupItemProps> = ({ virtualItem, groupInfo }) => {
       {groupInfo && (
         <div
           key={virtualItem.index}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: `${virtualItem.size}px`,
-            transform: `translateY(${virtualItem.start}px)`,
-            paddingBottom: 12,
-          }}
+          data-index={virtualItem.index}
+          ref={measureElement}
         >
           <SimpleCell
             before={
@@ -38,9 +36,13 @@ export const GroupItem: FC<GroupItemProps> = ({ virtualItem, groupInfo }) => {
           >
             <div className={styles['main_info_container']}>
               <div className={styles['main_info_container__title']}>
-                <Title>{groupInfo.name}</Title>
-                <Subhead className={styles['main_info_container__subhead']}>
-                  {groupInfo.closed ? 'Приватная группа' : 'Открытая группа'}
+                <Title className={styles['main_info_container__title_text']}>
+                  {groupInfo.name}
+                </Title>
+                <Subhead
+                  className={styles['main_info_container__title_subhead']}
+                >
+                  {groupInfo.closed ? 'Приватная' : 'Открытая'}
                 </Subhead>
               </div>
 
