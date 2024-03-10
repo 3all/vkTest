@@ -4,7 +4,6 @@ export const parseNumber = (value: number, variants: string[]): string => {
   if (value === 1) {
     return `${formattedvalue} ${variants[0]}`
   } else if (value % 10 === 1 && !(value % 100 >= 11 && value % 100 <= 14)) {
-    // Дополнительная проверка для чисел, оканчивающихся на 1, кроме 11-14
     return `${formattedvalue} ${variants[0]}`
   } else if (
     (value > 1 && value < 5) ||

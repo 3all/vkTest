@@ -6,6 +6,7 @@ import { GroupAvatar } from './GroupAvatar'
 import { FollowersInfo } from './FollowersInfo'
 import styles from './Main.module.css'
 import { parseNumber } from '../../utils/parseNumber'
+import { Icon20ArrowDownOutline, Icon20ArrowUpOutline } from '@vkontakte/icons'
 
 type GroupItemProps = {
   virtualItem: VirtualItem
@@ -39,6 +40,7 @@ export const GroupItem: FC<GroupItemProps> = ({
                 <Title className={styles['main_info_container__title_text']}>
                   {groupInfo.name}
                 </Title>
+
                 <Subhead
                   className={styles['main_info_container__title_subhead']}
                 >
@@ -46,26 +48,38 @@ export const GroupItem: FC<GroupItemProps> = ({
                 </Subhead>
               </div>
 
-              <Caption
-                level='1'
-                weight='1'
-                onClick={() => setIsExpanded(!isExpanded)}
-                className={styles['main_info_container__friends-amount']}
-              >
-                {parseNumber(groupInfo.friends?.length || 0, [
-                  'твой друг',
-                  'твоих друга',
-                  'твоих друзей',
-                ])}
-              </Caption>
+              <div className={styles['main_info_container__friends_amount']}>
+                <Caption level='1' weight='1'>
+                  {parseNumber(groupInfo.friends?.length || 0, [
+                    'твой друг',
+                    'твоих друга',
+                    'твоих друзей',
+                  ])}
+                </Caption>
+                {isExpanded ? (
+                  <Icon20ArrowUpOutline
+                    cursor='pointer'
+                    onClick={() => setIsExpanded(false)}
+                  />
+                ) : (
+                  <Icon20ArrowDownOutline
+                    cursor='pointer'
+                    onClick={() => setIsExpanded(true)}
+                  />
+                )}
+              </div>
 
               <div className={styles['friend_list']}>
                 {isExpanded &&
                   groupInfo.friends &&
-                  groupInfo.friends.map((friend: User) => {
+                  groupInfo.friends.map((friend: User, index: number) => {
                     return (
-                      <Text>
-                        {friend.last_name} {friend.first_name},
+                      <Text key={index}>
+                        {friend.last_name} {friend.first_name}
+                        {groupInfo.friends &&
+                        index !== groupInfo.friends?.length - 1
+                          ? ','
+                          : '.'}
                       </Text>
                     )
                   })}

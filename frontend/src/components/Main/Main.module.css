@@ -40,12 +40,14 @@
   align-self: self-end;
 }
 
+.main_info_container__friends_amount {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .friend_list {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-}
-
-.main_info_container__friends-amount {
-  cursor: pointer;
 }

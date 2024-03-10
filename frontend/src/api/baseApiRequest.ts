@@ -19,8 +19,6 @@ export async function baseApiRequest<T extends ApiEndpoints>({
 }: BaseApiRequestOptions<T>): Promise<ApiMethods[T]['response']> {
   const apiUrl = `${API_URL}${url}`
 
-  console.log(apiUrl)
-
   try {
     const response = await axios({
       method,
